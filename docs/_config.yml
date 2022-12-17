@@ -30,7 +30,7 @@ twitter_username: milanboruvka
 github_username:  milanboruvka
 
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 
