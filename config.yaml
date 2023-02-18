@@ -1,4 +1,4 @@
-baseURL: http://www.boruvka.net
+baseURL: /public/
 languageCode: en-us
 title: boruvka.net
 theme: hugo-profile
