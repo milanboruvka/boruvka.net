@@ -1,6 +1,6 @@
 baseURL: http://www.boruvka.net
 languageCode: en-us
-title: www.boruvka.net
+title: boruvka.net
 theme: hugo-profile
 
 outputs:
@@ -142,7 +142,7 @@ params:
     title: "About Me"
     image: "/images/milan_boruvka_profile_pic.jpeg"
     content: |-
-      I am a engineering manager and software developer. I have a background in computer science and I have a strong interest in software startups, SaaS and price management and optimization software. I am currently working as a Senior Vice President of Engineering at [Pricefx](https://www.pricefx.com) in Prague, Czechia. 
+      I am a Engineering Manager and Software Engineer. I have a background in computer science and I have a strong interest in software startups, SaaS and price management and optimization software. I am currently working as a Senior Vice President of Engineering at [Pricefx](https://www.pricefx.com) in Prague, Czechia. 
     skills:
       enable: true
       title: "Experience:"
