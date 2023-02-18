@@ -2,7 +2,7 @@ languageCode: en-us
 title: boruvka.net
 theme: hugo-profile
 url: "https://www.boruvka.net" # Domain Name of host. [username].github.io for github pages
-baseurl: "" # sub folder for jekyll site. only if jekyll site not in root of host. leave blank if not wishd. always add / in front.
+baseurl: "public" # sub folder for jekyll site. only if jekyll site not in root of host. leave blank if not wishd. always add / in front.
 permalink: pretty
 
 outputs:
