@@ -29,7 +29,7 @@ Menus:
     - identifier: blog
       name: Blog
       title: Blog posts
-      url: /blogs
+      url: https://blog.boruvka.net
       weight: 1
 #    - identifier: gallery
 #      name: Gallery
