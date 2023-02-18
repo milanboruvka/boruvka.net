@@ -1,0 +1,18 @@
+<p>Emoji can be enabled in a Hugo project in a number of ways. :zap:</p>
+
+<h2 id="emoji-support">Emoji Support</h2>
+
+<p>The <a href="https://gohugo.io/functions/emojify/">emojify</a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
+
+<p>To enable emoji globally, set <code class="language-plaintext highlighter-rouge">enableEmoji</code> to <code class="language-plaintext highlighter-rouge">true</code> in your site’s <a href="https://gohugo.io/getting-started/configuration/">configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
+
+<p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
+
+<hr />
+
+<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.emoji {
+  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+}
+</code></pre></div></div>
