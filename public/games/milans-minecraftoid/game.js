@@ -6,14 +6,19 @@ const livesElement = document.getElementById('lives');
 const menuOverlay = document.getElementById('menu-overlay');
 const gameOverOverlay = document.getElementById('game-over-overlay');
 const finalScoreElement = document.getElementById('final-score');
-const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
+
+// Difficulty Buttons
+const startSlowBtn = document.getElementById('start-slow');
+const startMediumBtn = document.getElementById('start-medium');
+const startFastBtn = document.getElementById('start-fast');
 
 // Game State
 let gameRunning = false;
 let score = 0;
 let lives = 3;
 let animationId;
+let currentSpeed = 5;
 
 // Assets
 const bgImage = new Image();
@@ -99,11 +104,11 @@ function initBricks() {
             if (r === 0) { type = 'diamond'; points = 50; }
             else if (r === 1) { type = 'gold'; points = 30; }
             else if (r === 2) { type = 'stone'; points = 20; }
-            
-            bricks[c][r] = { 
-                x: 0, 
-                y: 0, 
-                status: 1, 
+
+            bricks[c][r] = {
+                x: 0,
+                y: 0,
+                status: 1,
                 type: type,
                 points: points
             };
@@ -149,10 +154,10 @@ function drawBricks() {
                 const brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
-                
+
                 const b = bricks[c][r];
                 let img = brickImages[b.type];
-                
+
                 if (img && img.complete) {
                     ctx.drawImage(img, brickX, brickY, brickWidth, brickHeight);
                 } else {
@@ -174,10 +179,10 @@ function collisionDetection() {
                     b.status = 0;
                     score += b.points;
                     scoreElement.innerText = score;
-                    
+
                     // Check win condition
                     if (score === (brickRowCount * brickColumnCount * 10)) { // Simplified win check
-                       // In a real game, you'd track active bricks
+                        // In a real game, you'd track active bricks
                     }
                 }
             }
@@ -206,15 +211,15 @@ function moveBall() {
     } else if (ball.y + ball.dy > canvas.height - ball.radius) {
         // Paddle collision
         if (ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
-             // Simple reflection based on where it hits the paddle could be added here
-             // For now, just reverse Y
-             ball.dy = -ball.dy;
-             
-             // Speed up slightly on paddle hit
-             if (Math.abs(ball.dx) < 10) {
-                 ball.dx *= 1.05;
-                 ball.dy *= 1.05;
-             }
+            // Simple reflection based on where it hits the paddle could be added here
+            // For now, just reverse Y
+            ball.dy = -ball.dy;
+
+            // Speed up slightly on paddle hit
+            if (Math.abs(ball.dx) < 10) {
+                ball.dx *= 1.05;
+                ball.dy *= 1.05;
+            }
         } else {
             // Game Over / Life Lost
             lives--;
@@ -231,8 +236,8 @@ function moveBall() {
 function resetBall() {
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 30;
-    ball.dx = 5 * (Math.random() > 0.5 ? 1 : -1);
-    ball.dy = -5;
+    ball.dx = currentSpeed * (Math.random() > 0.5 ? 1 : -1);
+    ball.dy = -currentSpeed;
     paddle.x = (canvas.width - paddle.width) / 2;
 }
 
@@ -240,12 +245,12 @@ function draw() {
     if (!gameRunning) return;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     drawBackground();
     drawBricks();
     drawPaddle();
     drawBall();
-    
+
     collisionDetection();
     movePaddle();
     moveBall();
@@ -253,10 +258,11 @@ function draw() {
     animationId = requestAnimationFrame(draw);
 }
 
-function startGame() {
+function startGame(speed) {
     gameRunning = true;
     score = 0;
     lives = 3;
+    currentSpeed = speed;
     scoreElement.innerText = score;
     livesElement.innerText = lives;
     menuOverlay.classList.add('hidden');
@@ -273,10 +279,12 @@ function gameOver() {
     gameOverOverlay.classList.remove('hidden');
 }
 
-startBtn.addEventListener('click', startGame);
-restartBtn.addEventListener('click', startGame);
+startSlowBtn.addEventListener('click', () => startGame(3));
+startMediumBtn.addEventListener('click', () => startGame(5));
+startFastBtn.addEventListener('click', () => startGame(8));
+restartBtn.addEventListener('click', () => startGame(currentSpeed));
 
 // Initial draw to show background
-bgImage.onload = function() {
+bgImage.onload = function () {
     drawBackground();
 };

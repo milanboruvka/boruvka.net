@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milan's Minecraftoid</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="game-container">
         <div id="ui-layer">
@@ -15,7 +17,10 @@
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         <div id="menu-overlay" class="overlay">
             <h1>Minecraftoid</h1>
-            <button id="start-btn" class="mc-button">Start Game</button>
+            <p>Select Difficulty:</p>
+            <button id="start-slow" class="mc-button" data-speed="3">Mnagas' slowness 🐢</button>
+            <button id="start-medium" class="mc-button" data-speed="5">Fil's pace 🐕</button>
+            <button id="start-fast" class="mc-button" data-speed="8">Boruvek's speed 🐆</button>
         </div>
         <div id="game-over-overlay" class="overlay hidden">
             <h1 id="game-over-title">Game Over</h1>
@@ -25,4 +30,5 @@
     </div>
     <script src="game.js"></script>
 </body>
+
 </html>
